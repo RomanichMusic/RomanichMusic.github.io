@@ -1,1 +1,378 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Romanich Music</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #05070d;
+      color: #f5f5f5;
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .hero {
+      min-height: 100vh;
+      background:
+        linear-gradient(to bottom, rgba(5,7,13,.25), #05070d),
+        url("Small Things.jpeg") center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      padding: 40px;
+    }
+
+    .hero-content {
+      max-width: 760px;
+    }
+
+    .tag {
+      color: #9cc9ff;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      font-size: 14px;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-size: clamp(56px, 10vw, 120px);
+      line-height: 0.95;
+      margin-bottom: 24px;
+    }
+
+    .subtitle {
+      font-size: clamp(20px, 3vw, 32px);
+      color: #d8d8d8;
+      max-width: 650px;
+      margin-bottom: 32px;
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .btn {
+      padding: 14px 22px;
+      border: 1px solid rgba(255,255,255,.25);
+      border-radius: 999px;
+      background: rgba(255,255,255,.08);
+      backdrop-filter: blur(12px);
+      transition: .25s ease;
+    }
+
+    .btn:hover {
+      background: rgba(255,255,255,.18);
+      transform: translateY(-2px);
+    }
+
+    section {
+      padding: 90px 40px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .section-title {
+      font-size: clamp(34px, 5vw, 56px);
+      margin-bottom: 16px;
+    }
+
+    .section-text {
+      color: #bfc4d1;
+      max-width: 720px;
+      margin-bottom: 40px;
+      font-size: 18px;
+    }
+
+    .release-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 24px;
+    }
+
+    .card {
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 24px;
+      overflow: hidden;
+      transition: .25s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      background: rgba(255,255,255,.1);
+    }
+
+    .card img {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      display: block;
+    }
+
+    .card-content {
+      padding: 20px;
+    }
+
+    .card h3 {
+      font-size: 22px;
+      margin-bottom: 8px;
+    }
+
+    .card p {
+      color: #aeb4c2;
+      font-size: 15px;
+    }
+
+    .music-list {
+      display: grid;
+      gap: 18px;
+    }
+
+    .track {
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 20px;
+      padding: 20px;
+    }
+
+    .track h3 {
+      margin-bottom: 10px;
+    }
+
+    audio {
+      width: 100%;
+      margin-top: 8px;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 18px;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,.12);
+    }
+
+    .about {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .about-box {
+      background: linear-gradient(135deg, rgba(70,120,255,.18), rgba(255,180,70,.12));
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 28px;
+      padding: 34px;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px;
+    }
+
+    .contact-grid a {
+      padding: 18px;
+      border-radius: 18px;
+      background: rgba(255,255,255,.07);
+      border: 1px solid rgba(255,255,255,.12);
+      transition: .25s ease;
+    }
+
+    .contact-grid a:hover {
+      background: rgba(255,255,255,.14);
+    }
+
+    footer {
+      text-align: center;
+      color: #777;
+      padding: 40px;
+      border-top: 1px solid rgba(255,255,255,.08);
+    }
+
+    @media (max-width: 750px) {
+      .hero, section { padding: 40px 22px; }
+      .about { grid-template-columns: 1fr; }
+      .gallery img { height: 240px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="hero">
+    <div class="hero-content">
+      <div class="tag">Ambient • Piano • Lo-Fi</div>
+      <h1>Romanich</h1>
+      <p class="subtitle">
+        Independent musician creating atmospheric instrumental music inspired by nature,
+        memories, quiet evenings and everyday moments.
+      </p>
+
+      <div class="buttons">
+        <a class="btn" href="https://open.spotify.com/artist/0k1R5HFToEVh4AqsBhcC2P?si=EohzGRMsQceKghkEShykIg">Spotify</a>
+        <a class="btn" href="https://music.apple.com/us/artist/romanich/6780253506">Apple Music</a>
+        <a class="btn" href="https://music.youtube.com/playlist?list=OLAK5uy_l5LCJuhORZPCq8PyJjdA86zqN9Nch8TWU&si=og2MGb1l69LugMZv">YouTube Music</a>
+        <a class="btn" href="https://romanich.bandcamp.com/music">Bandcamp</a>
+        <a class="btn" href="https://www.youtube.com/channel/UCs-YaXmGYI9Qbnq14A4CKGA">YouTube</a>
+      </div>
+    </div>
+  </header>
+
+  <section>
+    <h2 class="section-title">Latest Releases</h2>
+    <p class="section-text">
+      A collection of small musical worlds — from warm night sketches to dreamy landscapes,
+      quiet walks and colorful instrumental ideas.
+    </p>
+
+    <div class="release-grid">
+      <div class="card">
+        <img src="Small Things.jpeg" alt="Small Things EP">
+        <div class="card-content">
+          <h3>Small Things</h3>
+          <p>Debut EP • warm studio atmosphere • instrumental sketches</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="Dreamy Beats.jpeg" alt="Mellow Skies">
+        <div class="card-content">
+          <h3>Mellow Skies</h3>
+          <p>Release date: June 26 • airy, calm and open</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="Red Green Blue.png" alt="RGB">
+        <div class="card-content">
+          <h3>RGB</h3>
+          <p>Release date: June 28 • colors turned into sound</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="On the walk.jpeg" alt="On The Walk">
+        <div class="card-content">
+          <h3>On The Walk</h3>
+          <p>Release date: July 1 • music made outside</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="Flow.jpeg" alt="Flow">
+        <div class="card-content">
+          <h3>Flow</h3>
+          <p>Release date: July 3 • movement, roads and evening lights</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-title">Listen</h2>
+    <p class="section-text">
+      Selected tracks and sketches. Jazzy Loop is a short loop idea rather than a full song.
+    </p>
+
+    <div class="music-list">
+      <div class="track">
+        <h3>Distant Bloom</h3>
+        <audio controls src="Distant bloom.mp3"></audio>
+      </div>
+
+      <div class="track">
+        <h3>Elsewhere</h3>
+        <audio controls src="Elsewhere.mp3"></audio>
+      </div>
+
+      <div class="track">
+        <h3>Moving Clouds</h3>
+        <audio controls src="Moving Clouds.mp3"></audio>
+      </div>
+
+      <div class="track">
+        <h3>Jazzy Loop</h3>
+        <p>Short musical sketch / loop idea</p>
+        <audio controls src="Jazzy Loop.mp3"></audio>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-title">Gallery</h2>
+    <p class="section-text">
+      Places, colors and moments that inspire the music.
+    </p>
+
+    <div class="gallery">
+      <img src="20231021_152955.jpg" alt="Sky">
+      <img src="20260425_122650 (2).jpeg" alt="Building and sky">
+      <img src="20260610_201153.jpeg" alt="Studio">
+      <img src="20260611_223036.jpeg" alt="Guitar">
+      <img src="20260614_172619.jpg" alt="Lamp">
+      <img src="Distant Bloom.jpeg" alt="Distant Bloom">
+      <img src="Flow.jpeg" alt="Traffic">
+      <img src="On the walk.jpeg" alt="Outdoor music setup">
+    </div>
+  </section>
+
+  <section class="about">
+    <div>
+      <h2 class="section-title">About</h2>
+      <p class="section-text">
+        Hi, I'm Romanich — an independent musician based in South Korea.
+        I create ambient, lo-fi, piano and instrumental music inspired by nature,
+        memories, city walks and quiet moments.
+      </p>
+      <p class="section-text">
+        I'm currently building my portfolio for university applications while sharing
+        my musical journey through original tracks, street performances and videos.
+      </p>
+    </div>
+
+    <div class="about-box">
+      <h3>Current Focus</h3>
+      <p>
+        Sound design, instrumental music, piano improvisation, busking,
+        music production and atmospheric storytelling.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-title">Links</h2>
+    <p class="section-text">Listen, watch or contact me here.</p>
+
+    <div class="contact-grid">
+      <a href="https://open.spotify.com/artist/0k1R5HFToEVh4AqsBhcC2P?si=EohzGRMsQceKghkEShykIg">Spotify</a>
+      <a href="https://music.apple.com/us/artist/romanich/6780253506">Apple Music</a>
+      <a href="https://music.youtube.com/playlist?list=OLAK5uy_l5LCJuhORZPCq8PyJjdA86zqN9Nch8TWU&si=og2MGb1l69LugMZv">YouTube Music</a>
+      <a href="https://romanich.bandcamp.com/music">Bandcamp</a>
+      <a href="https://www.youtube.com/channel/UCs-YaXmGYI9Qbnq14A4CKGA">YouTube</a>
+      <a href="https://www.instagram.com/romanich196/">Instagram</a>
+      <a href="mailto:IDKMTO@gmail.com">Email</a>
+    </div>
+  </section>
+
+  <footer>
+    © 2026 Romanich. Music, memories and small things.
+  </footer>
+
+</body>
+</html>
+```
 
