@@ -1,9 +1,11 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Romanich Music</title>
+
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -21,7 +23,9 @@
       background:
         linear-gradient(to bottom, rgba(5,7,13,.25), #05070d),
         url("Small Things.jpeg") center/cover no-repeat;
-      display: flex;
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 48px;
       align-items: center;
       padding: 40px;
     }
@@ -69,6 +73,20 @@
     .btn:hover {
       background: rgba(255,255,255,.18);
       transform: translateY(-2px);
+    }
+
+    .hero-photo-wrap {
+      display: flex;
+      justify-content: center;
+    }
+
+    .hero-photo {
+      width: min(430px, 100%);
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      border-radius: 32px;
+      border: 1px solid rgba(255,255,255,.18);
+      box-shadow: 0 30px 90px rgba(0,0,0,.55);
     }
 
     section {
@@ -150,20 +168,6 @@
       margin-top: 8px;
     }
 
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 18px;
-    }
-
-    .gallery img {
-      width: 100%;
-      height: 320px;
-      object-fit: cover;
-      border-radius: 22px;
-      border: 1px solid rgba(255,255,255,.12);
-    }
-
     .about {
       display: grid;
       grid-template-columns: 1.2fr .8fr;
@@ -203,148 +207,190 @@
       border-top: 1px solid rgba(255,255,255,.08);
     }
 
-    @media (max-width: 750px) {
-      .hero, section { padding: 40px 22px; }
-      .about { grid-template-columns: 1fr; }
-      .gallery img { height: 240px; }
+    @media (max-width: 850px) {
+      .hero {
+        grid-template-columns: 1fr;
+        padding: 40px 22px;
+      }
+
+      .hero-photo {
+        width: min(360px, 100%);
+      }
+
+      section {
+        padding: 60px 22px;
+      }
+
+      .about {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
+
 </head>
+
 <body>
 
   <header class="hero">
     <div class="hero-content">
       <div class="tag">Ambient • Piano • Lo-Fi</div>
-      <h1>Romanich</h1>
-      <p class="subtitle">
-        Independent musician creating atmospheric instrumental music inspired by nature,
-        memories, quiet evenings and everyday moments.
-      </p>
 
-      <div class="buttons">
-        <a class="btn" href="https://open.spotify.com/artist/0k1R5HFToEVh4AqsBhcC2P?si=EohzGRMsQceKghkEShykIg">Spotify</a>
-        <a class="btn" href="https://music.apple.com/us/artist/romanich/6780253506">Apple Music</a>
-        <a class="btn" href="https://music.youtube.com/playlist?list=OLAK5uy_l5LCJuhORZPCq8PyJjdA86zqN9Nch8TWU&si=og2MGb1l69LugMZv">YouTube Music</a>
-        <a class="btn" href="https://romanich.bandcamp.com/music">Bandcamp</a>
-        <a class="btn" href="https://www.youtube.com/channel/UCs-YaXmGYI9Qbnq14A4CKGA">YouTube</a>
-      </div>
-    </div>
+```
+  <h1>Romanich</h1>
+
+  <p class="subtitle">
+    Independent musician creating atmospheric instrumental music inspired by nature,
+    memories, quiet evenings and everyday moments.
+  </p>
+
+  <div class="buttons">
+    <a class="btn" href="https://open.spotify.com/artist/0k1R5HFToEVh4AqsBhcC2P?si=EohzGRMsQceKghkEShykIg">Spotify</a>
+    <a class="btn" href="https://music.apple.com/us/artist/romanich/6780253506">Apple Music</a>
+    <a class="btn" href="https://music.youtube.com/playlist?list=OLAK5uy_l5LCJuhORZPCq8PyJjdA86zqN9Nch8TWU&si=og2MGb1l69LugMZv">YouTube Music</a>
+    <a class="btn" href="https://romanich.bandcamp.com/music">Bandcamp</a>
+    <a class="btn" href="https://www.youtube.com/channel/UCs-YaXmGYI9Qbnq14A4CKGA">YouTube</a>
+  </div>
+</div>
+
+<div class="hero-photo-wrap">
+  <img class="hero-photo" src="romanich-photo.png" alt="Romanich playing bass">
+</div>
+```
+
   </header>
 
   <section>
     <h2 class="section-title">Latest Releases</h2>
-    <p class="section-text">
-      A collection of small musical worlds — from warm night sketches to dreamy landscapes,
-      quiet walks and colorful instrumental ideas.
-    </p>
 
-    <div class="release-grid">
-      <div class="card">
-        <img src="Small Things.jpeg" alt="Small Things EP">
-        <div class="card-content">
-          <h3>Small Things</h3>
-          <p>Debut EP • warm studio atmosphere • instrumental sketches</p>
-        </div>
-      </div>
+```
+<p class="section-text">
+  A collection of small musical worlds — from warm night sketches to dreamy landscapes,
+  quiet walks and colorful instrumental ideas.
+</p>
 
-      <div class="card">
-        <img src="Dreamy Beats.jpeg" alt="Mellow Skies">
-        <div class="card-content">
-          <h3>Mellow Skies</h3>
-          <p>Release date: June 26 • airy, calm and open</p>
-        </div>
-      </div>
-
-      <div class="card">
-        <img src="Red Green Blue.png" alt="RGB">
-        <div class="card-content">
-          <h3>RGB</h3>
-          <p>Release date: June 28 • colors turned into sound</p>
-        </div>
-      </div>
-
-      <div class="card">
-        <img src="On the walk.jpeg" alt="On The Walk">
-        <div class="card-content">
-          <h3>On The Walk</h3>
-          <p>Release date: July 1 • music made outside</p>
-        </div>
-      </div>
-
-      <div class="card">
-        <img src="Flow.jpeg" alt="Flow">
-        <div class="card-content">
-          <h3>Flow</h3>
-          <p>Release date: July 3 • movement, roads and evening lights</p>
-        </div>
-      </div>
+<div class="release-grid">
+  <div class="card">
+    <img src="Small Things.jpeg" alt="Small Things EP">
+    <div class="card-content">
+      <h3>Small Things</h3>
+      <p>Debut EP • warm studio atmosphere • instrumental sketches</p>
     </div>
+  </div>
+
+  <div class="card">
+    <img src="Dreamy Beats.jpeg" alt="Mellow Skies">
+    <div class="card-content">
+      <h3>Mellow Skies</h3>
+      <p>Release date: June 26 • airy, calm and open</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="Red Green Blue.png" alt="RGB">
+    <div class="card-content">
+      <h3>RGB</h3>
+      <p>Release date: June 28 • colors turned into sound</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="On the walk.jpeg" alt="On The Walk">
+    <div class="card-content">
+      <h3>On The Walk</h3>
+      <p>Release date: July 1 • music made outside</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="Flow.jpeg" alt="Flow">
+    <div class="card-content">
+      <h3>Flow</h3>
+      <p>Release date: July 3 • movement, roads and evening lights</p>
+    </div>
+  </div>
+</div>
+```
+
   </section>
 
   <section>
     <h2 class="section-title">Listen</h2>
-    <p class="section-text">
-      Selected tracks and sketches. Jazzy Loop is a short loop idea rather than a full song.
-    </p>
 
-    <div class="music-list">
-      <div class="track">
-        <h3>Distant Bloom</h3>
-        <audio controls src="Distant bloom.mp3"></audio>
-      </div>
+```
+<p class="section-text">
+  Selected tracks and sketches. Jazzy Loop is a short loop idea rather than a full song.
+</p>
 
-      <div class="track">
-        <h3>Elsewhere</h3>
-        <audio controls src="Elsewhere.mp3"></audio>
-      </div>
+<div class="music-list">
+  <div class="track">
+    <h3>Distant Bloom</h3>
+    <audio controls src="Distant bloom.mp3"></audio>
+  </div>
 
-      <div class="track">
-        <h3>Moving Clouds</h3>
-        <audio controls src="Moving Clouds.mp3"></audio>
-      </div>
+  <div class="track">
+    <h3>Elsewhere</h3>
+    <audio controls src="Elsewhere.mp3"></audio>
+  </div>
 
-      <div class="track">
-        <h3>Jazzy Loop</h3>
-        <p>Short musical sketch / loop idea</p>
-        <audio controls src="Jazzy Loop.mp3"></audio>
-      </div>
-    </div>   
+  <div class="track">
+    <h3>Moving Clouds</h3>
+    <audio controls src="Moving Clouds.mp3"></audio>
+  </div>
+
+  <div class="track">
+    <h3>Jazzy Loop</h3>
+    <p>Short musical sketch / loop idea</p>
+    <audio controls src="Jazzy Loop.mp3"></audio>
+  </div>
+</div>
+```
+
+  </section>
+
   <section class="about">
     <div>
       <h2 class="section-title">About</h2>
-      <p class="section-text">
-        Hi, I'm Romanich — an independent musician based in South Korea.
-        I create ambient, lo-fi, piano and instrumental music inspired by nature,
-        memories, city walks and quiet moments.
-      </p>
-      <p class="section-text">
-        I'm currently building my portfolio for university applications while sharing
-        my musical journey through original tracks, street performances and videos.
-      </p>
-    </div>
 
-    <div class="about-box">
-      <h3>Current Focus</h3>
-      <p>
-        Sound design, instrumental music, piano improvisation, busking,
-        music production and atmospheric storytelling.
-      </p>
-    </div>
+```
+  <p class="section-text">
+    Hi, I'm Romanich — an independent musician based in South Korea.
+    I create ambient, lo-fi, piano and instrumental music inspired by nature,
+    memories, city walks and quiet moments.
+  </p>
+
+  <p class="section-text">
+    I'm currently building my portfolio for university applications while sharing
+    my musical journey through original tracks, street performances and videos.
+  </p>
+</div>
+
+<div class="about-box">
+  <h3>Current Focus</h3>
+  <p>
+    Sound design, instrumental music, piano improvisation, busking,
+    music production and atmospheric storytelling.
+  </p>
+</div>
+```
+
   </section>
 
   <section>
     <h2 class="section-title">Links</h2>
     <p class="section-text">Listen, watch or contact me here.</p>
 
-    <div class="contact-grid">
-      <a href="https://open.spotify.com/artist/0k1R5HFToEVh4AqsBhcC2P?si=EohzGRMsQceKghkEShykIg">Spotify</a>
-      <a href="https://music.apple.com/us/artist/romanich/6780253506">Apple Music</a>
-      <a href="https://music.youtube.com/playlist?list=OLAK5uy_l5LCJuhORZPCq8PyJjdA86zqN9Nch8TWU&si=og2MGb1l69LugMZv">YouTube Music</a>
-      <a href="https://romanich.bandcamp.com/music">Bandcamp</a>
-      <a href="https://www.youtube.com/channel/UCs-YaXmGYI9Qbnq14A4CKGA">YouTube</a>
-      <a href="https://www.instagram.com/romanich196/">Instagram</a>
-      <a href="mailto:IDKMTO@gmail.com">Email</a>
-    </div>
+```
+<div class="contact-grid">
+  <a href="https://open.spotify.com/artist/0k1R5HFToEVh4AqsBhcC2P?si=EohzGRMsQceKghkEShykIg">Spotify</a>
+  <a href="https://music.apple.com/us/artist/romanich/6780253506">Apple Music</a>
+  <a href="https://music.youtube.com/playlist?list=OLAK5uy_l5LCJuhORZPCq8PyJjdA86zqN9Nch8TWU&si=og2MGb1l69LugMZv">YouTube Music</a>
+  <a href="https://romanich.bandcamp.com/music">Bandcamp</a>
+  <a href="https://www.youtube.com/channel/UCs-YaXmGYI9Qbnq14A4CKGA">YouTube</a>
+  <a href="https://www.instagram.com/romanich196/">Instagram</a>
+  <a href="mailto:IDKMTO@gmail.com">Email</a>
+</div>
+```
+
   </section>
 
   <footer>
@@ -353,5 +399,3 @@
 
 </body>
 </html>
-```
-
