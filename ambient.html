@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Ambient videos by Romanich: quiet visual sessions, instrumental music and reflective moments.">
+  <meta name="theme-color" content="#e5e1dc">
+  <title>Ambient Videos — Romanich</title>
+  <style>
+    :root { --paper:#e5e1dc; --ink:#171717; --muted:#66625e; --line:rgba(23,23,23,.18); --dark:#111214; --light:#f5f2ed; }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin:0; color:var(--ink); background:var(--paper); font-family:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; line-height:1.55; }
+    a { color:inherit; text-decoration:none; }
+    img { display:block; max-width:100%; }
+    a:focus-visible { outline:3px solid #111; outline-offset:4px; }
+    .shell { width:min(1180px,calc(100% - 40px)); margin-inline:auto; }
+    .nav { position:absolute; z-index:2; top:0; left:50%; transform:translateX(-50%); width:min(1180px,calc(100% - 40px)); display:flex; justify-content:space-between; align-items:center; padding:24px 0; }
+    .wordmark { font-size:17px; font-weight:850; letter-spacing:.12em; text-transform:uppercase; }
+    .nav-links { display:flex; gap:22px; font-size:14px; }
+    .nav-links a:hover { opacity:.55; }
+    .hero { min-height:100svh; position:relative; display:grid; align-items:end; isolation:isolate; overflow:hidden; }
+    .hero::before { content:""; position:absolute; z-index:-2; inset:0; background:url("assets/ambient/thinking-hero.png") center/cover no-repeat; }
+    .hero::after { content:""; position:absolute; z-index:-1; inset:0; background:linear-gradient(90deg,rgba(229,225,220,.97) 0%,rgba(229,225,220,.78) 36%,rgba(229,225,220,.04) 72%),linear-gradient(0deg,var(--paper),transparent 28%); }
+    .hero-inner { padding:160px 0 11vh; }
+    .eyebrow { margin:0 0 18px; font-size:12px; font-weight:850; letter-spacing:.18em; text-transform:uppercase; }
+    h1 { max-width:780px; margin:0 0 28px; font-size:clamp(68px,11vw,138px); letter-spacing:-.075em; line-height:.82; }
+    .hero-copy { max-width:560px; margin:0 0 32px; color:#4f4c49; font-size:clamp(18px,2vw,23px); }
+    .button { display:inline-flex; align-items:center; justify-content:center; min-height:48px; padding:12px 20px; border:1px solid var(--ink); border-radius:100px; font-weight:750; transition:.2s; }
+    .button.primary { color:var(--light); background:var(--ink); }
+    .button:hover { transform:translateY(-2px); color:var(--ink); background:#fff; }
+    section { padding:110px 0; }
+    .section-head { display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:end; margin-bottom:44px; }
+    .kicker { margin:0 0 10px; color:#726c67; font-size:12px; font-weight:850; letter-spacing:.18em; text-transform:uppercase; }
+    h2 { margin:0; font-size:clamp(43px,7vw,76px); letter-spacing:-.055em; line-height:.95; }
+    .intro { margin:0; color:var(--muted); font-size:18px; }
+    .feature { display:grid; grid-template-columns:1.15fr .85fr; overflow:hidden; border:1px solid var(--line); border-radius:28px; background:#d8d3cd; }
+    .frame { background:#0c0d0f; }
+    .frame iframe { display:block; width:100%; aspect-ratio:16/9; border:0; }
+    .feature .frame iframe { height:100%; min-height:420px; }
+    .feature-copy { display:flex; flex-direction:column; justify-content:center; padding:clamp(30px,5vw,64px); }
+    .feature-copy h3 { margin:12px 0 16px; font-size:clamp(36px,5vw,62px); letter-spacing:-.05em; line-height:1; }
+    .feature-copy p { margin:0 0 28px; color:var(--muted); }
+    .video-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:22px; margin-top:22px; }
+    .video-card { overflow:hidden; border:1px solid var(--line); border-radius:22px; background:#d8d3cd; }
+    .video-card-copy { padding:24px; }
+    .video-card h3 { margin:0 0 8px; font-size:25px; }
+    .video-card p { margin:0; color:var(--muted); }
+    .statement { color:var(--light); background:var(--dark); }
+    .statement-grid { display:grid; grid-template-columns:.85fr 1.15fr; gap:clamp(45px,9vw,120px); align-items:center; }
+    .statement img { width:100%; aspect-ratio:1; object-fit:cover; border-radius:26px; }
+    .statement h2 { margin-bottom:24px; }
+    .statement p { color:#bbb8b4; font-size:clamp(18px,2vw,22px); }
+    .closing { text-align:center; }
+    .closing h2 { max-width:780px; margin:0 auto 24px; }
+    .closing p { max-width:580px; margin:0 auto 34px; color:var(--muted); }
+    .actions { display:flex; flex-wrap:wrap; justify-content:center; gap:10px; }
+    footer { padding:28px 20px; border-top:1px solid var(--line); color:#77716c; text-align:center; font-size:13px; }
+    @media (max-width:850px) { .section-head,.feature,.statement-grid { grid-template-columns:1fr; } .feature .frame iframe { min-height:0; } }
+    @media (max-width:650px) { .shell,.nav { width:min(100% - 28px,1180px); } .nav-links { display:none; } .hero::after { background:linear-gradient(0deg,var(--paper) 0%,rgba(229,225,220,.76) 56%,rgba(229,225,220,.18) 100%); } .hero-inner { padding-bottom:8vh; } .video-grid { grid-template-columns:1fr; } section { padding:76px 0; } }
+    @media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } *,*::before,*::after { transition-duration:.01ms!important; } }
+  </style>
+</head>
+<body>
+  <header class="hero" id="top">
+    <nav class="nav" aria-label="Main navigation">
+      <a class="wordmark" href="index.html">Romanich</a>
+      <div class="nav-links"><a href="#videos">Videos</a><a href="#about">About the series</a><a href="index.html">Main site</a></div>
+    </nav>
+    <div class="shell hero-inner">
+      <p class="eyebrow">Ambient video journal · 2026</p>
+      <h1>Thinking in sound.</h1>
+      <p class="hero-copy">Quiet instrumental music and slow-moving images for studying, reflecting, resting—or simply letting a moment pass without rushing it.</p>
+      <a class="button primary" href="#videos">Enter the series</a>
+    </div>
+  </header>
+
+  <main>
+    <section id="videos">
+      <div class="shell">
+        <div class="section-head">
+          <div><p class="kicker">New ambient videos</p><h2>A place to slow down.</h2></div>
+          <p class="intro">These visual sessions pair Romanich’s ambient and lo-fi instrumentals with restrained imagery. Each piece is an invitation to listen without needing to arrive anywhere.</p>
+        </div>
+        <article class="feature">
+          <div class="frame"><iframe src="https://www.youtube-nocookie.com/embed/pfqO0cWR1Jw" title="Thinking by Romanich" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+          <div class="feature-copy"><p class="kicker">Featured film</p><h3>Thinking</h3><p>A full ambient visual work written, produced and mixed by Romanich. Minimal movement leaves room for the music—and for your own thoughts.</p><div><a class="button primary" href="https://www.youtube.com/watch?v=pfqO0cWR1Jw" target="_blank" rel="noopener">Watch on YouTube</a></div></div>
+        </article>
+        <div class="video-grid">
+          <article class="video-card"><div class="frame"><iframe src="https://www.youtube-nocookie.com/embed/try9crpo870" title="Sitting and doing stuff by Romanich" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div><div class="video-card-copy"><h3>Sitting and doing stuff</h3><p>A longer instrumental session built around the Classic Mellow collection.</p></div></article>
+          <article class="video-card"><div class="frame"><iframe src="https://www.youtube-nocookie.com/embed/gr6M3RHVu_k" title="Valve from Thinking by Romanich" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div><div class="video-card-copy"><h3>Valve</h3><p>A compact visual excerpt from Thinking: lo-fi atmosphere in a smaller frame.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="statement" id="about">
+      <div class="shell statement-grid">
+        <img src="assets/ambient/thinking-cover.jpg" alt="Black-and-white portrait artwork for Thinking" loading="lazy">
+        <div><p class="kicker">About the series</p><h2>Music for unguarded moments.</h2><p>The ambient video journal is a quieter branch of Romanich’s work. It brings together piano-led ideas, soft electronic textures and simple visual studies—music made for late evenings, open notebooks and the spaces between decisions.</p><p>The series will grow as new visual pieces are completed.</p></div>
+      </div>
+    </section>
+
+    <section class="closing shell">
+      <p class="kicker">Continue listening</p>
+      <h2>More quiet worlds are waiting.</h2>
+      <p>Follow the full video channel or continue into Romanich’s music catalog.</p>
+      <div class="actions"><a class="button primary" href="https://www.youtube.com/channel/UCs-YaXmGYI9Qbnq14A4CKGA" target="_blank" rel="noopener">Watch on YouTube</a><a class="button" href="https://soundcloud.com/romanich23" target="_blank" rel="noopener">Listen on SoundCloud</a><a class="button" href="index.html">Return to main site</a></div>
+    </section>
+  </main>
+  <footer>© 2026 Romanich · Ambient videos and quiet music.</footer>
+</body>
+</html>
